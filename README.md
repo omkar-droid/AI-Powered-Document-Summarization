@@ -47,7 +47,7 @@ By combining RAG with dense retrieval and LLMs, this system achieves significant
 
 ```mermaid
 flowchart LR
-  A[Client] -->|POST /summarize { "text": "…" }| B[FastAPI API]
+  A[Client] -->|POST /summarize| B[FastAPI API]
   B -->|Cache Check (Redis)| C{Cache Hit?}
   C -- Yes -->|Return Cached Summary| D[Client]
   C -- No --> E[RAGService.summarize_text]
@@ -66,6 +66,7 @@ flowchart LR
     O --> P[Cassandra]
     O --> Q[Redis]
   end
+```
 
 1. **API Flow (Synchronous)**  
    - Client calls `POST /summarize` with a document’s text.  
