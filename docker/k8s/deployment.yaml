@@ -1,0 +1,23 @@
+# Placeholder for ai_doc_summarizer/docker/k8s/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ai-summarizer-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: ai-summarizer
+  template:
+    metadata:
+      labels:
+        app: ai-summarizer
+    spec:
+      containers:
+        - name: ai-summarizer-container
+          image: your-docker-repo/ai-summarizer:latest
+          ports:
+            - containerPort: 8000
+          envFrom:
+            - configMapRef:
+                name: ai-summarizer-config

@@ -1,0 +1,5 @@
+# Placeholder for ai_doc_summarizer/data/sample_documents/example1.txt
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum vestibulum. Cras venenatis euismod malesuada. 
+Suspendisse potenti. Praesent tincidunt, nisl nec consectetur elementum, nisl risus consequat lectus, eu iaculis risus sapien ut turpis. 
+Maecenas tempor, urna at posuere cursus, sapien odio cursus nisl, sed tincidunt sapien lacus non purus. Donec ut ligula ullamcorper, 
+tristique tortor sed, tempus purus. Fusce placerat eros eu elit efficitur, at feugiat justo luctus.

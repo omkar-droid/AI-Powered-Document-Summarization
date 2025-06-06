@@ -1,0 +1,57 @@
+# Placeholder for ai_doc_summarizer/docker/docker-compose.yml
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    container_name: ai_summarizer_app
+    env_file:
+      - .env
+    depends_on:
+      - redis
+      - cassandra
+      - kafka
+      - zookeeper
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./data:/app/data
+
+  zookeeper:
+    image: bitnami/zookeeper:latest
+    container_name: zookeeper
+    environment:
+      - ALLOW_ANONYMOUS_LOGIN=yes
+    ports:
+      - "2181:2181"
+
+  kafka:
+    image: bitnami/kafka:latest
+    container_name: kafka
+    environment:
+      - KAFKA_BROKER_ID=1
+      - KAFKA_ZOOKEEPER_CONNECT=zookeeper:2181
+      - KAFKA_LISTENERS=PLAINTEXT://:9092
+      - KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://kafka:9092
+      - ALLOW_PLAINTEXT_LISTENER=yes
+    ports:
+      - "9092:9092"
+    depends_on:
+      - zookeeper
+
+  redis:
+    image: redis:6-alpine
+    container_name: redis
+    command: ["redis-server", "--requirepass", "yourRedisPassword"]
+    ports:
+      - "6379:6379"
+
+  cassandra:
+    image: cassandra:3.11
+    container_name: cassandra
+    environment:
+      CASSANDRA_START_RPC: "true"
+    ports:
+      - "9042:9042"

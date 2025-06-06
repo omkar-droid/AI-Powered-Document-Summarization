@@ -1,0 +1,24 @@
+# Placeholder for ai_doc_summarizer/config/config.yaml
+openai:
+  api_key: YOUR_OPENAI_API_KEY
+
+pinecone:
+  api_key: YOUR_PINECONE_API_KEY
+  environment: YOUR_PINECONE_ENV
+  index_name: doc-summary-index
+
+kafka:
+  bootstrap_servers: "kafka:9092"
+  topic: "documents"
+
+redis:
+  host: "redis"
+  port: 6379
+  password: "yourRedisPassword"
+  db: 0
+
+cassandra:
+  hosts:
+    - "cassandra"
+  port: 9042
+  keyspace: "doc_summary_keyspace"

@@ -1,0 +1,13 @@
+# Placeholder for ai_doc_summarizer/docker/k8s/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: ai-summarizer-service
+spec:
+  selector:
+    app: ai-summarizer
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8000
+  type: LoadBalancer

@@ -1,0 +1,23 @@
+# Placeholder for ai_doc_summarizer/config/logging.yaml
+version: 1
+disable_existing_loggers: false
+
+formatters:
+  simple:
+    format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+
+handlers:
+  console:
+    class: logging.StreamHandler
+    level: DEBUG
+    formatter: simple
+
+loggers:
+  ai_summarizer:
+    level: DEBUG
+    handlers: [console]
+    propagate: false
+
+root:
+  level: INFO
+  handlers: [console]
