@@ -2,30 +2,29 @@
 
 **Engineered by:** Omkar Shewale  
 
-
 ---
 
 ## 🚀 Project Overview
 
 This repository implements a production-grade, AI-powered document summarization system that leverages:
 
-- **Retrieval-Augmented Generation (RAG)** via LangChain and Pinecone
-- **Large Language Models (LLMs)** (OpenAI GPT-3.5/4) for high-quality summarization
-- **Hugging Face Transformers** (facebook/bart-large-cnn) as a reliable fallback
-- **Asynchronous Ingestion** through Apache Kafka
-- **Caching Layer** using Redis for sub-50 ms response times
-- **Persistent Storage** in Cassandra for original documents and summaries
-- **FastAPI** to serve a RESTful API for real-time summarization
-- **Docker & Kubernetes** configurations for containerized and scalable deployments
+- **Retrieval-Augmented Generation (RAG)** via LangChain and Pinecone  
+- **Large Language Models (LLMs)** (OpenAI GPT-3.5/4) for high-quality summarization  
+- **Hugging Face Transformers** (facebook/bart-large-cnn) as a reliable fallback  
+- **Asynchronous Ingestion** through Apache Kafka  
+- **Caching Layer** using Redis for sub-50 ms response times  
+- **Persistent Storage** in Cassandra for original documents and summaries  
+- **FastAPI** to serve a RESTful API for real-time summarization  
+- **Docker & Kubernetes** configurations for containerized and scalable deployments  
 
-By combining RAG with dense retrieval and LLMs, this system achieves significant improvements in contextual relevance (≈30 % BLEU score gain) over baseline transformer-only summarizers.
+By combining RAG with dense retrieval and LLMs, this system achieves significant improvements in contextual relevance (≈ 30 % BLEU score gain) over baseline transformer-only summarizers.
 
 ---
 
 ## 🛠️ Tech Stack
 
 - **Language & Frameworks**  
-  • Python 3.9+  
+  • Python 3.9+  
   • FastAPI (REST API)  
   • LangChain (RAG orchestration)  
   • OpenAI GPT-3.5/4 (context-aware summarization)  
@@ -48,7 +47,7 @@ By combining RAG with dense retrieval and LLMs, this system achieves significant
 
 ```mermaid
 flowchart LR
-  A[Client] -->|POST /summarize{ "text": "..."}| B[FastAPI API]
+  A[Client] -->|POST /summarize { "text": "…" }| B[FastAPI API]
   B -->|Cache Check (Redis)| C{Cache Hit?}
   C -- Yes -->|Return Cached Summary| D[Client]
   C -- No --> E[RAGService.summarize_text]
@@ -67,7 +66,6 @@ flowchart LR
     O --> P[Cassandra]
     O --> Q[Redis]
   end
-```
 
 1. **API Flow (Synchronous)**  
    - Client calls `POST /summarize` with a document’s text.  
