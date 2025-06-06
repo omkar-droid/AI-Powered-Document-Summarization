@@ -42,31 +42,7 @@ By combining RAG with dense retrieval and LLMs, this system achieves significant
   • PyYAML & python-dotenv (configuration management)  
 
 ---
-
-## 📈 System Architecture
-
-```mermaid
-flowchart LR
-  A[Client] -->|POST /summarize| B[FastAPI API]
-  B -->|Cache Check (Redis)| C{Cache Hit?}
-  C -- Yes -->|Return Cached Summary| D[Client]
-  C -- No --> E[RAGService.summarize_text]
-  E --> F[EmbeddingService (Pinecone)]
-  F --> G[Pinecone Index]
-  G --> H[RetrievalQA → OpenAI GPT]
-  H --> I[Bullet-Point Summary]
-  I -->|Return to API| D[Client]
-  I -->|Persist in Cassandra| J[Cassandra]
-  I -->|Cache in Redis| K[Redis]
-
-  subgraph Async_Ingestion
-    L[Kafka Producer] -->|topic: documents| M[Kafka Broker]
-    M --> N[KafkaConsumer]
-    N --> O[RAGService.summarize_text]
-    O --> P[Cassandra]
-    O --> Q[Redis]
-  end
-```
+System Architecture
 
 1. **API Flow (Synchronous)**  
    - Client calls `POST /summarize` with a document’s text.  
