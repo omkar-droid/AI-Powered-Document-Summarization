@@ -208,7 +208,7 @@ docker-compose up -d
 
 ---
 
-## ✅ What You’ve Achieved
+## ✅ Goals Achieved
 
 - **30 % BLEU Improvement** over a baseline transformer summarizer by integrating RAG with dense retrieval.
 - **High-Fidelity Summaries**: 5 bullet points preserving essential information.
@@ -220,8 +220,4 @@ docker-compose up -d
 
 ---
 
-By following this README, any developer, recruiter, or interviewer can easily:
-- Understand core components, data flows, and dependencies.
-- Reproduce a local development environment.
-- Deploy a robust, end-to-end AI summarization service.
-- Appreciate the technical design, optimizations, and production-grade considerations.
+
